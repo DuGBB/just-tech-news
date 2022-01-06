@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/DuGBB/just-tech-news#readme",
   "dependencies": {
+    "@babel/types": "^7.16.7",
     "bcrypt": "^5.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
