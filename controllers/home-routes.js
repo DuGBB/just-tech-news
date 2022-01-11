@@ -1,8 +1,10 @@
 const router = require("express").Router();
 const sequelize = require("../config/connection");
-const { Post, User, Comment } = require("../models");
+const { Post, User, Comment, Vote } = require("../models");
 
+// get all posts for homepage
 router.get("/", (req, res) => {
+  console.log("======================");
   Post.findAll({
     attributes: [
       "id",
@@ -32,15 +34,24 @@ router.get("/", (req, res) => {
     ],
   })
     .then((dbPostData) => {
-      // console.log("inside the dbPostData Promise");
-      console.log(dbPostData[0]);
       const posts = dbPostData.map((post) => post.get({ plain: true }));
+
       res.render("homepage", { posts });
     })
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
+});
+
+router.get("/login", (req, res) => {
+  if (req.session.loggedIn) {
+    console.log("REDIRECTING");
+    res.redirect("/");
+    return; //removing return causes an error
+  }
+  console.log("Rendinging the login page");
+  res.render("login");
 });
 
 module.exports = router;
