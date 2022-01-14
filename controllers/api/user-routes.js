@@ -54,8 +54,9 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", withAuth, (req, res) => {
+router.post("/", (req, res) => {
   // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  console.log("\n\nI THINK Ive BEEN CALLED BY NEW USER SUBMKT!!\n\n");
   User.create({
     username: req.body.username,
     email: req.body.email,
