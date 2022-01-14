@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
     console.log("Made it past the login fetch");
     if (response.ok) {
       console.log("Login success!!");
-      document.location.replace("/");
+      document.location.replace("/dashboard");
     } else {
       console.log("login failure");
       alert(response.statusText);
